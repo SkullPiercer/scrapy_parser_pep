@@ -8,10 +8,6 @@ class PepSpider(scrapy.Spider):
     start_urls = ['http://peps.python.org/']
 
     def parse(self, response):
-        # sections = response.css(
-        #     'section[id="index-by-category"],'
-        #     ' section[id="numerical-index"]'
-        # )
         page_links = response.css('a[href^="pep"]')
         for link in page_links:
             yield response.follow(link, callback=self.parse_pep)
