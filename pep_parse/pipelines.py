@@ -30,4 +30,3 @@ class PepParsePipeline:
             writer.writerow(['Статус', 'Количество'])
 
             writer.writerows(self.status_count.items())
-
