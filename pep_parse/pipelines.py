@@ -19,6 +19,7 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         total = sum(self.status_count.values())
+        self.status_count['Total'] = total
 
         formatted_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         filename = BASE_DIR / f'results/status_summary_{formatted_time}.csv'
@@ -30,4 +31,3 @@ class PepParsePipeline:
 
             writer.writerows(self.status_count.items())
 
-            self.status_count['Total'] = total
